@@ -1,0 +1,47 @@
+/** Media Queries **/
+@mixin telefono {
+    @media (max-width: 767px) {
+      @content; // Teléfonos pequeños y grandes, hasta 767px
+    }
+  }
+  
+  @mixin tablet {
+    @media (min-width: 768px) and (max-width: 1023px) {
+      @content; // Tablets desde 768px hasta 1023px
+    }
+  }
+    
+  @mixin telefono-o-tablet {
+    @media (max-width: 1023px) {
+      @content; // Tablets desde 768px hasta 1023px
+    }
+  }
+  
+  @mixin desktop {
+    @media (min-width: 1024px) {
+      @content; // Escritorios y pantallas más grandes a partir de 1024px
+    }
+  }
+  
+@mixin grid($columnas, $espaciado ) {
+    display: grid;
+    gap: $espaciado;
+    grid-template-columns: repeat($columnas, 1fr);
+}
+
+@mixin boton($bgColor, $display ) {
+    background-color: $bgColor;
+    color: $blanco;
+    font-weight: $bold;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    margin-top: $separacion / 2;
+    display: $display;
+    border: none;
+
+    &:hover {
+        background-color: darken($bgColor, 5);
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "name": "chuchalo/bienesraices",
+    "description": "Convirtiendo el proyecto en POO",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Chuchalo\\Bienesraices\\": "src/",
+            "App\\" : "./classes"
+            }
+    },
+    "authors": [
+        {
+            "name": "Jeremy",
+            "email": "leoneljeremiasalto06@gmail.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.5"
+    }
+}

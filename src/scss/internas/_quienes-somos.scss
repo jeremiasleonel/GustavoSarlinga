@@ -1,0 +1,229 @@
+@use 'base/mixins.scss' as m;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.about-us {
+  .section {
+    padding: 2rem;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+
+    h2 {
+      margin-bottom: 3rem;
+    }
+
+    p {
+      margin-top: 1rem;
+      margin-bottom: 3rem;
+
+      @include m.telefono {
+        font-size: 2rem;
+      }
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      @include m.telefono-o-tablet {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .who-we-are__img {
+        width: 55rem;
+        height: 55rem;
+        object-fit: cover; // Escala la imagen para llenar el contenedor sin distorsión
+        object-position: center; // Centra la imagen en el contenedor
+        border-radius: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out; // Transición suave para cambios en ancho, alto, etc.
+        margin: 0 auto 3rem 0;
+        transition: transform 0.4s ease, box-shadow 0.4s ease; // Transición suave
+
+        &:hover {
+          transform: scale(1.1); // Aumenta el tamaño de la imagen
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); // Añade sombra
+        }
+
+        @include m.telefono {
+          width: 35rem;
+          height: 35rem;
+        }
+
+        @include m.tablet {
+          width: 45rem;
+          height: 45rem;
+
+        }
+      }
+
+      .why-choose-us__img {
+        width: 55rem;
+        height: 55rem;
+        object-fit: cover; // Escala la imagen para llenar el contenedor sin distorsión
+        object-position: center; // Centra la imagen en el contenedor
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out; // Transición suave para cambios en ancho, alto, etc.
+        margin: 0 auto;
+
+        @include m.telefono {
+          width: 35rem;
+          height: 35rem;
+        }
+
+        @include m.tablet {
+          width: 45rem;
+          height: 45rem;
+        }
+      }
+
+    }
+  }
+
+  .who-we-are {
+    background-color: $secundary-color-background;
+    color: $text-color;
+
+    @include m.telefono-o-tablet {
+      h2 {
+        margin-top: 10vh;
+      }
+    }
+  }
+
+  .our-mission {
+    background-color: $primary-color-background;
+    color: $text-color;
+  }
+
+  .why-choose-us {
+    background-color: $white-color-background;
+    color: $primary-color;
+  }
+}
+
+.container-carousel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include m.telefono-o-tablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Carrusel */
+.carousel {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* Estilo para las imágenes */
+.carousel-images {
+  width: 100%;
+  height: auto; // El contenedor tiene un alto del 100% de la ventana
+  overflow: hidden; // Asegura que nada se salga del contenedor
+}
+
+.carousel-images img {
+  width: 55rem; // La imagen tomará el 100% del ancho del contenedor
+  height: 55rem; // La altura se ajusta automáticamente según el ancho
+  object-fit: cover; // La imagen cubrirá el contenedor sin distorsionarse
+
+  @include m.telefono {
+    width: 35rem;
+    height: 35rem;
+  }
+
+  @include m.tablet {
+    height: 45rem;
+    width: 45rem;
+
+  }
+}
+
+
+.carousel-images picture {
+  flex: 0 0 100%;
+  display: none; // Las imágenes estarán ocultas inicialmente
+}
+
+/* Estilo para los puntos de navegación */
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  top: 90%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #fff;
+}
+
+.dot:hover {
+  background-color: #ddd;
+}
+
+/* Estilos de transición suave */
+.carousel-images picture {
+  transition: opacity 1s ease;
+}
+
+.carousel-images picture:first-child {
+  display: block; // Mostrar la primera imagen al inicio
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .carousel {
+    width: 100%;
+  }
+
+  .carousel-images picture {
+    width: 100%;
+  }
+}
+
+.content,
+.container-carousel {
+
+  p {
+    font-size: 2.2rem;
+    line-height: 1.6;
+    width: 100%;
+    transition: all 0.3s ease-in-out; // Transición suave para cambios en ancho, alto, etc.
+    margin: 0 auto;
+
+    &:hover {
+      text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.1);
+      transform: scale(1.05); // Aumenta el tamaño al 120%
+
+    }
+  }
+}
